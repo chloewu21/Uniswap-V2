@@ -122,7 +122,10 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   padding-top: 36px;
   padding-bottom: 80px;
-
+  // background-image: url("https://miro.medium.com/v2/resize:fit:1400/format:webp/0*31KsPUT4-bzF-QV0.jpg");
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-size: 2000px 1000px;
   @media screen and (max-width: 600px) {
     & > * {
       padding: 0 12px;
