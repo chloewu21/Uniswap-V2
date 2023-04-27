@@ -5,6 +5,7 @@ import { Text, Box } from 'rebass'
 import Link from './Link'
 
 import { urls } from '../utils'
+import img from './newbackground.jpg';
 
 const Divider = styled(Box)`
   height: 1px;
@@ -122,10 +123,10 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   padding-top: 36px;
   padding-bottom: 80px;
-  // background-image: url("https://miro.medium.com/v2/resize:fit:1400/format:webp/0*31KsPUT4-bzF-QV0.jpg");
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
-  // background-size: 2000px 1000px;
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 120%;
   @media screen and (max-width: 600px) {
     & > * {
       padding: 0 12px;
@@ -144,6 +145,7 @@ export const ContentWrapper = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
   box-sizing: border-box;
+  // background: ${({ theme }) => theme.bg1};
   @media screen and (max-width: 1180px) {
     grid-template-columns: 1fr;
     padding: 0 1rem;

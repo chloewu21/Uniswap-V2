@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -10,11 +11,16 @@ import Wordmark from '../../assets/wordmark_white.svg'
 
 import { BasicLink } from '../Link'
 import { useMedia } from 'react-use'
+import { TrendingUp, List, PieChart, Disc } from 'react-feather'
+import { TYPE } from '../../Theme'
+import { transparentize } from 'polished'
 
 const TitleWrapper = styled.div`
   text-decoration: none;
+  background-color: ${({ theme }) => transparentize(0.4, theme.bg1)};
   z-index: 10;
   width: 100%;
+  height: 100px;
   &:hover {
     cursor: pointer;
   }
@@ -45,55 +51,60 @@ export default function Title() {
 
   return (
     <TitleWrapper onClick={() => history.push('/')}>
-      <Flex alignItems="center" style={{ justifyContent: 'space-between' }}>
-        <RowFixed>
-          <UniIcon id="link" onClick={() => history.push('/')}>
-            <img width={'150px'} src={Logo} alt="logo" />
-          </UniIcon>
-          {!below1080}
-        </RowFixed>
-        {below1080 && (
-          <RowFixed style={{ alignItems: 'flex-end' }}>
-            <BasicLink to="/home">
-              <Option activeText={history.location.pathname === '/home' ?? undefined}>Overview</Option>
-            </BasicLink>
-            <BasicLink to="/tokens">
-              <Option
-                activeText={
-                  (history.location.pathname.split('/')[1] === 'tokens' ||
-                    history.location.pathname.split('/')[1] === 'token') ??
-                  undefined
-                }
-              >
-                Tokens
-              </Option>
-            </BasicLink>
-            <BasicLink to="/pairs">
-              <Option
-                activeText={
-                  (history.location.pathname.split('/')[1] === 'pairs' ||
-                    history.location.pathname.split('/')[1] === 'pair') ??
-                  undefined
-                }
-              >
-                Pairs
-              </Option>
-            </BasicLink>
+      {/* <Flex alignItems="center" style={{ justifyContent: 'space-between' }}> */}
 
-            <BasicLink to="/accounts">
-              <Option
-                activeText={
-                  (history.location.pathname.split('/')[1] === 'accounts' ||
-                    history.location.pathname.split('/')[1] === 'account') ??
-                  undefined
-                }
-              >
-                Accounts
-              </Option>
-            </BasicLink>
-          </RowFixed>
-        )}
-      </Flex>
+      {/* <RowFixed> */}
+      <UniIcon id="link" onClick={() => history.push('/')}>
+        <img width={'150px'} src={Logo} alt="logo" />
+      </UniIcon>
+
+      {!below1080}
+      {/* </RowFixed> */}
+      {below1080 && (
+        <RowFixed style={{ alignItems: 'flex-end' }}>
+          <BasicLink to="/home">
+            <Option activeText={history.location.pathname === '/home' ?? undefined}>
+              <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
+              Overview
+            </Option>
+          </BasicLink>
+          <BasicLink to="/tokens">
+            <Option
+              activeText={
+                (history.location.pathname.split('/')[1] === 'tokens' ||
+                  history.location.pathname.split('/')[1] === 'token') ??
+                undefined
+              }
+            >
+              Tokens
+            </Option>
+          </BasicLink>
+          <BasicLink to="/pairs">
+            <Option
+              activeText={
+                (history.location.pathname.split('/')[1] === 'pairs' ||
+                  history.location.pathname.split('/')[1] === 'pair') ??
+                undefined
+              }
+            >
+              Pairs
+            </Option>
+          </BasicLink>
+
+          <BasicLink to="/accounts">
+            <Option
+              activeText={
+                (history.location.pathname.split('/')[1] === 'accounts' ||
+                  history.location.pathname.split('/')[1] === 'account') ??
+                undefined
+              }
+            >
+              Accounts
+            </Option>
+          </BasicLink>
+        </RowFixed>
+      )}
+      {/* </Flex> */}
     </TitleWrapper>
   )
 }

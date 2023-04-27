@@ -14,7 +14,10 @@ import AllPairsPage from './pages/AllPairsPage'
 import PinnedData from './components/PinnedData'
 
 import SideNav from './components/SideNav'
+import Header from './components/Header'
+import Title from './components/Title'
 import AccountLookup from './pages/AccountLookup'
+import SwapPage from './pages/SwapPage'
 import LocalLoader from './components/LocalLoader'
 import { useLatestBlocks } from './contexts/Application'
 import GoogleAnalyticsReporter from './components/analytics/GoogleAnalyticsReporter'
@@ -23,11 +26,11 @@ import { PAIR_BLACKLIST, TOKEN_BLACKLIST } from './constants'
 const AppWrapper = styled.div`
   position: relative;
   width: 100%;
+  overflow-x: hidden;
 `
 const ContentWrapper = styled.div`
   display: grid;
-  grid-template-columns: ${({ open }) => (open ? '220px 1fr 200px' : '220px 1fr 64px')};
-
+  // grid-template-columns: ${({ open }) => (open ? '220px 1fr 200px' : '220px 1fr 64px')};
   @media screen and (max-width: 1400px) {
     grid-template-columns: 220px 1fr;
   }
@@ -85,9 +88,9 @@ const LayoutWrapper = ({ children, savedOpen, setSavedOpen }) => {
       <ContentWrapper open={savedOpen}>
         <SideNav />
         <Center id="center">{children}</Center>
-        <Right open={savedOpen}>
+        {/* <Right open={savedOpen}>
           <PinnedData open={savedOpen} setSavedOpen={setSavedOpen} />
-        </Right>
+        </Right> */}
       </ContentWrapper>
     </>
   )
@@ -107,15 +110,18 @@ function App() {
 
   return (
     <div style={{ backgroundImage: 'url(${background})' }}>
+      {/* <div className="App">
+        <Header />
+      </div> */}
       <ApolloProvider client={client}>
         <AppWrapper>
-          {showWarning && (
-            <WarningWrapper>
-              <WarningBanner>
-                {`Warning: The data on this site has only synced to Ethereum block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
-              </WarningBanner>
-            </WarningWrapper>
-          )}
+          {/* {showWarning && ( */}
+          {/* <WarningWrapper> */}
+          {/* <WarningBanner> */}
+          {/* {`Warning: The data on this site has only synced to Ethereum block ${latestBlock} (out of ${headBlock}). Please check back soon.`} */}
+          {/* </WarningBanner> */}
+          {/* </WarningWrapper> */}
+          {/* )} */}
           {globalData &&
             Object.keys(globalData).length > 0 &&
             globalChartData &&
@@ -177,6 +183,22 @@ function App() {
                     }
                   }}
                 />
+                <Route
+                  exacts
+                  strict
+                  path="/swap/:swapAddress"
+                  render={({ match }) => {
+                    if (isAddress(match.params.swapAddress.toLowerCase())) {
+                      return (
+                        <LayoutWrapper savedOpen={savedOpen} setSavedOpen={setSavedOpen}>
+                          <SwapPage address={match.params.swapAddress.toLowerCase()} />
+                        </LayoutWrapper>
+                      )
+                    } else {
+                      return <Redirect to="/home" />
+                    }
+                  }}
+                />
 
                 <Route path="/home">
                   <LayoutWrapper savedOpen={savedOpen} setSavedOpen={setSavedOpen}>
@@ -199,6 +221,12 @@ function App() {
                 <Route path="/accounts">
                   <LayoutWrapper savedOpen={savedOpen} setSavedOpen={setSavedOpen}>
                     <AccountLookup />
+                  </LayoutWrapper>
+                </Route>
+
+                <Route path="/swap">
+                  <LayoutWrapper savedOpen={savedOpen} setSavedOpen={setSavedOpen}>
+                    <SwapPage />
                   </LayoutWrapper>
                 </Route>
 

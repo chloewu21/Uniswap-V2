@@ -19,7 +19,8 @@ const panelPseudo = css`
 
 const Panel = styled(RebassBox)`
   position: relative;
-  background-color: ${({ theme }) => theme.advancedBG};
+  // background-color: ${({ theme }) => theme.bg1};
+  background-color: #202232;
   padding: 1.25rem;
   width: 100%;
   height: 100%;
