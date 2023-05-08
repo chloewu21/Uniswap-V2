@@ -10,6 +10,7 @@ import { RowBetween } from '../components/Row'
 import Search from '../components/Search'
 import { useMedia } from 'react-use'
 
+
 function SwapPage() {
     const allTokens = useAllTokenData()
 
@@ -23,8 +24,7 @@ function SwapPage() {
 
     return (
         // <PageWrapper>
-
-        <iframe src="https://chloe-testappv2-wmn5n7rc5q-uc.a.run.app" width="100%" height="820" scrolling="no" frameborder="0"></iframe>
+        <iframe src="https://chloe-testappv2-wmn5n7rc5q-uc.a.run.app" sandbox width="100%" height="820" scrolling="no" frameborder="0" allow="gyroscope"></iframe>
 
 
         // </PageWrapper>

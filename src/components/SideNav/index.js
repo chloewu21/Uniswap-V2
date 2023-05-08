@@ -20,9 +20,10 @@ const Wrapper = styled.div`
   // background-color: ${({ theme }) => transparentize(0.4, theme.bg1)};
   background-color: #202232;
   // color: ${({ theme }) => theme.text1};
-  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
-  // position: sticky;
-  // top: 0px;
+  // padding: 0.3rem 0.5rem 0.3rem 0.75rem;
+  height: 55px;
+  position: sticky;
+  top: 0px;
   // z-index: 9999;
   // box-sizing: border-box;
   // /* background-color: #1b1c22; */
@@ -47,8 +48,16 @@ const Option = styled.div`
   font-size: 14px;
   opacity: ${({ activeText }) => (activeText ? 1 : 0.6)};
   color: ${({ theme }) => theme.white};
+  /* background: linear-gradient(45deg, #ac50ef, #7059fb 50%, #2ecff6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  */
   display: flex;
-  margin: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+  margin-left: 30px;
+  // margin: 30px ;
   :hover {
     opacity: 1;
   }
@@ -130,11 +139,11 @@ function SideNav({ history }) {
             // <AutoColumn gap="1.25rem" style={{ marginTop: '1rem' }}>
             <RowFixed>
               <UniIcon id="link" onClick={() => history.push('/')}>
-                <img width={'150px'} src={Logo} alt="logo" />
+                <img width={'110px'} src={Logo} alt="logo" style={{ marginRight: '.75rem', marginLeft: '.75rem' }} />
               </UniIcon>
               <BasicLink to="/home">
                 <Option activeText={history.location.pathname === '/home' ?? undefined}>
-                  <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
+                  <TrendingUp size={20} style={{ marginLeft: '.3rem', marginRight: '.5rem' }} />
                   Overview
                 </Option>
               </BasicLink>

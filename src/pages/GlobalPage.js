@@ -132,7 +132,7 @@ function GlobalPage() {
           )}
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
-              <TYPE.main fontSize={'1.125rem'} style={{ whiteSpace: 'nowrap' }}>
+              <TYPE.main fontSize={'1.2rem'} style={{ whiteSpace: 'nowrap' }}>
                 Top Tokens
               </TYPE.main>
               <CustomLink to={'/tokens'}>See All</CustomLink>
@@ -143,7 +143,7 @@ function GlobalPage() {
           </Panel>
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
-              <TYPE.main fontSize={'1rem'} style={{ whiteSpace: 'nowrap' }}>
+              <TYPE.main fontSize={'1.2rem'} style={{ whiteSpace: 'nowrap' }}>
                 Top Pairs
               </TYPE.main>
               <AutoRow gap="4px" width="100%" justifyContent="flex-end">
@@ -161,7 +161,7 @@ function GlobalPage() {
             <PairList pairs={allPairs} useTracked={useTracked} />
           </Panel>
           <span>
-            <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
+            <TYPE.main fontSize={'1.2rem'} style={{ marginTop: '2rem' }}>
               Transactions
             </TYPE.main>
           </span>

@@ -5,7 +5,7 @@ import { Text, Box } from 'rebass'
 import Link from './Link'
 
 import { urls } from '../utils'
-import img from './newbackground.jpg';
+import img from './fadedbackground.png';
 
 const Divider = styled(Box)`
   height: 1px;
