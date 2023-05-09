@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactGA from 'react-ga'
-import { withRouter, HashRouter } from 'react-router-dom'
+import { withRouter, HashRouter as Router } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
 import ThemeProvider, { GlobalStyle } from './Theme'
 import LocalStorageContextProvider, { Updater as LocalStorageContextUpdater } from './contexts/LocalStorage'
@@ -64,12 +64,12 @@ ReactDOM.render(
   <ContextProviders>
     <Updaters />
     <ThemeProvider>
-      <HashRouter>
+      <Router>
         <>
           <GlobalStyle />
           <App />
         </>
-      </HashRouter>
+      </Router>
     </ThemeProvider>
   </ContextProviders>,
   document.getElementById('root')
