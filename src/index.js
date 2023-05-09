@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactGA from 'react-ga'
+import { withRouter, HashRouter } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
 import ThemeProvider, { GlobalStyle } from './Theme'
 import LocalStorageContextProvider, { Updater as LocalStorageContextUpdater } from './contexts/LocalStorage'
@@ -26,8 +27,8 @@ if (typeof GOOGLE_ANALYTICS_ID === 'string') {
     customBrowserType: !isMobile
       ? 'desktop'
       : 'web3' in window || 'ethereum' in window
-      ? 'mobileWeb3'
-      : 'mobileRegular',
+        ? 'mobileWeb3'
+        : 'mobileRegular',
   })
 } else {
   ReactGA.initialize('test', { testMode: true, debug: true })
@@ -63,10 +64,12 @@ ReactDOM.render(
   <ContextProviders>
     <Updaters />
     <ThemeProvider>
-      <>
-        <GlobalStyle />
-        <App />
-      </>
+      <HashRouter>
+        <>
+          <GlobalStyle />
+          <App />
+        </>
+      </HashRouter>
     </ThemeProvider>
   </ContextProviders>,
   document.getElementById('root')
