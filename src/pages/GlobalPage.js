@@ -174,5 +174,5 @@ function GlobalPage() {
   )
 }
 
-export default withRouter(GlobalPage)
+export default GlobalPage
 // export default HashRouter(GlobalPage)
