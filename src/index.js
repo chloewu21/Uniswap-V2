@@ -64,12 +64,10 @@ ReactDOM.render(
   <ContextProviders>
     <Updaters />
     <ThemeProvider>
-      <Router>
-        <>
-          <GlobalStyle />
-          <App />
-        </>
-      </Router>
+      <>
+        <GlobalStyle />
+        <App />
+      </>
     </ThemeProvider>
   </ContextProviders>,
   document.getElementById('root')
