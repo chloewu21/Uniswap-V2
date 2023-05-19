@@ -14,7 +14,7 @@ import AllPairsPage from './pages/AllPairsPage'
 import PinnedData from './components/PinnedData'
 
 import SideNav from './components/SideNav'
-import Header from './components/Header'
+import Header from './components/HeaderBar'
 import Title from './components/Title'
 import AccountLookup from './pages/AccountLookup'
 import SwapPage from './pages/SwapPage'

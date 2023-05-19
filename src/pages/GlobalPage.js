@@ -19,12 +19,14 @@ import Panel from '../components/Panel'
 import { useAllTokenData } from '../contexts/TokenData'
 import { formattedNum, formattedPercent } from '../utils'
 import { TYPE, ThemedBackground } from '../Theme'
-import { transparentize } from 'polished'
+import { darken, transparentize } from 'polished'
 import { CustomLink } from '../components/Link'
 
 import { PageWrapper, ContentWrapper } from '../components'
 import CheckBox from '../components/Checkbox'
 import QuestionHelper from '../components/QuestionHelper'
+import { ButtonLight, ButtonFaded } from '../components/ButtonStyled'
+
 
 const ListOptions = styled(AutoRow)`
   height: 40px;
@@ -44,6 +46,14 @@ const GridRow = styled.div`
   column-gap: 6px;
   align-items: start;
   justify-content: space-between;
+`
+const TextShadow = styled.div`
+  background-color: ${({ color, theme }) => (color ? transparentize(0.9, color) : transparentize(0.9, theme.primary1))};
+  color: ${({ color, theme }) => (color ? darken(0.1, color) : theme.primary1)};
+
+  width: fit-content;
+  border-radius: 12px;
+  white-space: nowrap;
 `
 
 function GlobalPage() {
@@ -75,7 +85,9 @@ function GlobalPage() {
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
             <TYPE.largeHeader>{below800 ? 'Analytics' : 'Analytics'}</TYPE.largeHeader>
             <Search />
-            <GlobalStats />
+            <TextShadow width="100px">
+              <GlobalStats />
+            </TextShadow>
           </AutoColumn>
           {below800 && ( // mobile card
             <Box mb={20}>
@@ -135,7 +147,7 @@ function GlobalPage() {
               <TYPE.main fontSize={'1.2rem'} style={{ whiteSpace: 'nowrap' }}>
                 Top Tokens
               </TYPE.main>
-              <CustomLink to={'/tokens'}>See All</CustomLink>
+              <ButtonLight><CustomLink to={'/tokens'}>See All</CustomLink></ButtonLight>
             </RowBetween>
           </ListOptions>
           <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
@@ -153,7 +165,7 @@ function GlobalPage() {
                   text={'Hide untracked pairs'}
                 />
                 <QuestionHelper text="USD amounts may be inaccurate in low liquiidty pairs or pairs without ETH or stablecoins." />
-                <CustomLink to={'/pairs'}>See All</CustomLink>
+                <ButtonLight><CustomLink to={'/pairs'}> See All </CustomLink></ButtonLight>
               </AutoRow>
             </RowBetween>
           </ListOptions>
